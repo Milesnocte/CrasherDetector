@@ -3,9 +3,6 @@ plugins {
     id 'org.jetbrains.kotlin.jvm' version '1.4.10'
 }
 
-group 'org.example'
-version '1.0'
-
 repositories {
     mavenCentral()
     jcenter()
@@ -28,8 +25,7 @@ dependencies {
 
 task fatJar(type: Jar) {
     manifest {
-        attributes 'Implementation-Title': 'Gradle Jar File Example',
-                'Main-Class': 'Main.JDA'
+        attributes 'Main-Class': 'JDA'
     }
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
     with jar
