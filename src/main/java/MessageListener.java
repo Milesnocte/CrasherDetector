@@ -16,7 +16,7 @@ import java.util.List;
 public class MessageListener extends ListenerAdapter {
 
     @Override
-    public void onGuildMessageReceived(@NotNull GuildMessageReceivedEvent event) {
+    public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
 
         if(event.getMessage().getContentRaw().replace("!","").equals(event.getJDA().getSelfUser().getAsMention())){
             event.getChannel().sendMessage("Hello! I have only one command: `$crashers`. This command will display how many crashers I have deleted. " +
@@ -83,6 +83,8 @@ public class MessageListener extends ListenerAdapter {
                                 Elements video = doc.select("video");
                                 srsURL = video.html().substring(video.html().indexOf("https://giant."));
                                 srsURL = srsURL.substring(0,srsURL.indexOf(".mp4")+4);
+                                doc.empty();
+                                video.clear();
                             }else{
                                 srsURL = url;
                             }
@@ -192,6 +194,8 @@ public class MessageListener extends ListenerAdapter {
                 }
             }
         }
+
+        input.close();
 
     }
 }
